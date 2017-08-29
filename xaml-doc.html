@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+
+<head>
+    <link rel="stylesheet" href="stylesheet.css" type="text/css">
+    <script src="https://gitcdn.link/repo/freeCodeCamp/testable-projects-fcc/master/build/bundle.js"></script>
+</head>
+
+<body>
+    <!-- Copy from here for CodePen -->
+
+    <div id="nav">
+        <nav id="navbar">
+            <header>XAML Syntax in Brief</header>
+            <a href="#What_is_XAML" class="nav-link">What is XAML</a>
+            <a href="#XAML_Syntax_in_Brief" class="nav-link">XAML Syntax in Brief</a>
+            <a href="#Case_and_Whitespace_in_XAML" class="nav-link">Case and Whitespace in XAML</a>
+            <a href="#Markup_Extensions" class="nav-link">Markup Extensions</a>
+            <a href="#Type_Converters" class="nav-link">Type Converters</a>
+            <a href="#XAML_Root_Elements_and_XAML_Namespaces" class="nav-link">XAML Root Elements and XAML Namespaces</a>
+            <a href="#Custom_Prefixes_and_Custom_Types_in_XAML" class="nav-link">Custom Prefixes and Custom Types in XAML</a>
+            <a href="#Events_and_XAML_Code-Behind" class="nav-link">Events and XAML Code-Behind</a>
+            <a href="#XAML_Named_Elements" class="nav-link">XAML Named Elements</a>
+            <a href="#Attached_Properties_and_Attached_Events" class="nav-link">Attached Properties and Attached Events</a>
+            <a href="#Base_Types_and_XAML" class="nav-link">Base Types and XAML</a>
+            <a href="#XAML_Security" class="nav-link">XAML Security</a>
+            <a href="#Loading_XAML_from_Code" class="nav-link">Loading XAML from Code</a>
+        </nav>
+    </div>
+
+    <div>
+        <main id="main-doc">
+
+            <section id="XAML_Syntax_in_Brief" class="main-section">
+                <header>XAML Syntax in Brief</header>
+                <p>
+                    The following sections explain the basic forms of XAML syntax, and give a short markup example. These sections are not intended to provide complete information about each syntax form, such as how these are represented in the backing type system. For more
+                    information about the specifics of XAML syntax for each of the syntax forms introduced in this topic, <a href="https://docs.microsoft.com/en-us/dotnet/framework/wpf/advanced/xaml-syntax-in-detail">see XAML Syntax In Detail</a>.
+                </p>
+                <p>
+                    Much of the material in the next few sections will be elementary to you, if you have previous familiarity with the XML language. This is a consequence of one of the basic design principles of XAML. XAML The XAML language defines concepts of its own, but
+                    these concepts work within the XML language and markup form.
+                </p>
+                <h2>XAML Object Elements</h2>
+                <p>
+                    An object element typically declares an instance of a type. That type is defined in the assemblies that provide the backing types for a technology that uses XAML as a language.
+                </p>
+                <p>
+                    Object element syntax always starts with an opening angle bracket (&lt;). This is followed by the name of the type where you want to create an instance. (The name can possibly include a prefix, a concept that will be explained later.) After this, you
+                    can optionally declare attributes on the object element. To complete the object element tag, end with a closing angle bracket (&gt;). You can instead use a self-closing form that does not have any content, by completing the tag with
+                    a forward slash and closing angle bracket in succession (/&gt;). For example, look at the previously shown markup snippet again:
+                    <pre>
+                    &lt;StackPanel&gt;
+                        &lt;Button Content="Click Me"/&gt;
+                    &lt;StackPanel&gt;
+                </pre> This specifies two object elements: <code>&lt;StackPanel&gt;</code> (with content, and a closing tag later), and <code>&lt;Button .../&gt;</code> (the self-closing form, with several attributes). The object elements
+                    <code>StackPanel</code> and <code>Button</code> each map to the name of a class that is defined by WPF and is part of the WPF assemblies. When you specify an object element tag, you create an instruction for XAML processing to create
+                    a new instance. Each instance is created by calling the default constructor of the underlying type when parsing and loading the XAML.
+                </p>
+            </section>
+            <section id="Attribute_Syntax_(Properties)" class="main-section"></section>
+            <header>Attribute Syntax (Properties)</header>
+            <p>
+                Properties of an object can often be expressed as attributes of the object element. An attribute syntax names the property that is being set in attribute syntax, followed by the assignment operator (=). The value of an attribute is always specified as
+                a string that is contained within quotation marks.
+            </p>
+            <p>
+                Attribute syntax is the most streamlined property setting syntax and is the most intuitive syntax to use for developers who have used markup languages in the past. For example, the following markup creates a button that has red text and a blue background
+                in addition to display text specified as <code>Content</code>.
+            </p>
+            <pre>
+                    &lt;Button Background="Blue" Foreground="Red" Content="This is a button"/&gt;
+                </pre>
+            </section>
+            <h2>Property Element Syntax</h2>
+            <p>
+                For some properties of an object element, attribute syntax is not possible, because the object or information necessary to provide the property value cannot be adequately expressed within the quotation mark and string restrictions of attribute syntax.
+                For these cases, a different syntax known as property element syntax can be used.
+            </p>
+            <p>
+                The syntax for the property element start tag is <code>&lt;</code><i>typeName</i><code>.</code><i>propertyName</i><code>&gt;</code>. Generally, the content of that tag is an object element of the type that the property takes as its value.
+                After specifying content, you must close the property element with an end tag. The syntax for the end tag is <code>&lt;/</code><i>typeName</i><code>.</code><i>propertyName</i><code>&gt;</code>.
+            </p>
+            <p>
+                If an attribute syntax is possible, using the attribute syntax is typically more convenient and enables a more compact markup, but that is often just a matter of style, not a technical limitation. The following example shows the same properties being
+                set as in the previous attribute syntax example, but this time by using property element syntax for all properties of the Button.
+            </p>
+            <pre>
+                        &lt;Button&gt;
+                            &lt;Button.Background&gt;
+                                &lt;SolidColorBrush Color="Blue"/&gt;
+                            &lt;/Button.Background&gt;
+                                &lt;Button.Foreground&gt;
+                                    &lt;SolidColorBrush Color="Red"/&gt;
+                                &lt;/Button.Foreground&gt;
+                            &lt;Button.Content&gt;
+                                  This is a button
+                            &lt;/Button.Content&gt;
+                        &lt;/Button&gt;
+                </pre>
+            </section>
+
+        </main>
+    </div>
+    <!-- Copy to here for CodePen -->
+
+</body>
