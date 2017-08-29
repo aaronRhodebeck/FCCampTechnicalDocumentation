@@ -6,6 +6,7 @@ header {
 code {
     background: lightgray;
     padding: 1px;
+    margin: 2px;
 }
 
 pre {
@@ -13,4 +14,5 @@ pre {
     margin: 20px;
     padding: 10px;
     border: 1px solid black;
+    font-family: monospace;
 }

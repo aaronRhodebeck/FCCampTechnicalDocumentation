@@ -10,20 +10,16 @@
 
     <div id="nav">
         <nav id="navbar">
-            <header>XAML Syntax in Brief</header>
-            <a href="#What_is_XAML" class="nav-link">What is XAML</a>
+            <header>XAML Syntax</header>
             <a href="#XAML_Syntax_in_Brief" class="nav-link">XAML Syntax in Brief</a>
-            <a href="#Case_and_Whitespace_in_XAML" class="nav-link">Case and Whitespace in XAML</a>
-            <a href="#Markup_Extensions" class="nav-link">Markup Extensions</a>
-            <a href="#Type_Converters" class="nav-link">Type Converters</a>
-            <a href="#XAML_Root_Elements_and_XAML_Namespaces" class="nav-link">XAML Root Elements and XAML Namespaces</a>
-            <a href="#Custom_Prefixes_and_Custom_Types_in_XAML" class="nav-link">Custom Prefixes and Custom Types in XAML</a>
-            <a href="#Events_and_XAML_Code-Behind" class="nav-link">Events and XAML Code-Behind</a>
-            <a href="#XAML_Named_Elements" class="nav-link">XAML Named Elements</a>
-            <a href="#Attached_Properties_and_Attached_Events" class="nav-link">Attached Properties and Attached Events</a>
-            <a href="#Base_Types_and_XAML" class="nav-link">Base Types and XAML</a>
-            <a href="#XAML_Security" class="nav-link">XAML Security</a>
-            <a href="#Loading_XAML_from_Code" class="nav-link">Loading XAML from Code</a>
+            <a href="#XAML_Object_Elements" class="nav-link">XAML Object Elements</a>
+            <a href="#Attribute_Syntax_(Properties)" class="nav-link">Attribute Syntax (Properties)</a>
+            <a href="#Property_Element_Syntax" class="nav-link">Property Element Syntax</a>
+            <a href="#Collection_Syntax" class="nav-link">Collection Syntax</a>
+            <a href="#XAML_Content_Properties" class="nav-link">XAML Content Properties</a>
+            <a href="#Text_Content" class="nav-link">Text Content</a>
+            <a href="#Content_Properties_and_Collection_Syntax_Combined" class="nav-link">Content Properties and Collection Syntax Combined</a>
+            <a href="#Attribute_Syntax_(Events)" class="nav-link">Attribute Syntax (Events)</a>
         </nav>
     </div>
 
@@ -40,7 +36,9 @@
                     Much of the material in the next few sections will be elementary to you, if you have previous familiarity with the XML language. This is a consequence of one of the basic design principles of XAML. XAML The XAML language defines concepts of its own, but
                     these concepts work within the XML language and markup form.
                 </p>
-                <h2>XAML Object Elements</h2>
+            </section>
+            <section id="XAML_Object_Elements" class="main-section">
+                <header>XAML Object Elements</header>
                 <p>
                     An object element typically declares an instance of a type. That type is defined in the assemblies that provide the backing types for a technology that uses XAML as a language.
                 </p>
@@ -57,34 +55,35 @@
                     a new instance. Each instance is created by calling the default constructor of the underlying type when parsing and loading the XAML.
                 </p>
             </section>
-            <section id="Attribute_Syntax_(Properties)" class="main-section"></section>
-            <header>Attribute Syntax (Properties)</header>
-            <p>
-                Properties of an object can often be expressed as attributes of the object element. An attribute syntax names the property that is being set in attribute syntax, followed by the assignment operator (=). The value of an attribute is always specified as
-                a string that is contained within quotation marks.
-            </p>
-            <p>
-                Attribute syntax is the most streamlined property setting syntax and is the most intuitive syntax to use for developers who have used markup languages in the past. For example, the following markup creates a button that has red text and a blue background
-                in addition to display text specified as <code>Content</code>.
-            </p>
-            <pre>
+            <section id="Attribute_Syntax_(Properties)" class="main-section">
+                <header>Attribute Syntax (Properties)</header>
+                <p>
+                    Properties of an object can often be expressed as attributes of the object element. An attribute syntax names the property that is being set in attribute syntax, followed by the assignment operator (=). The value of an attribute is always specified as
+                    a string that is contained within quotation marks.
+                </p>
+                <p>
+                    Attribute syntax is the most streamlined property setting syntax and is the most intuitive syntax to use for developers who have used markup languages in the past. For example, the following markup creates a button that has red text and a blue background
+                    in addition to display text specified as <code>Content</code>.
+                </p>
+                <pre>
                     &lt;Button Background="Blue" Foreground="Red" Content="This is a button"/&gt;
                 </pre>
             </section>
-            <h2>Property Element Syntax</h2>
-            <p>
-                For some properties of an object element, attribute syntax is not possible, because the object or information necessary to provide the property value cannot be adequately expressed within the quotation mark and string restrictions of attribute syntax.
-                For these cases, a different syntax known as property element syntax can be used.
-            </p>
-            <p>
-                The syntax for the property element start tag is <code>&lt;</code><i>typeName</i><code>.</code><i>propertyName</i><code>&gt;</code>. Generally, the content of that tag is an object element of the type that the property takes as its value.
-                After specifying content, you must close the property element with an end tag. The syntax for the end tag is <code>&lt;/</code><i>typeName</i><code>.</code><i>propertyName</i><code>&gt;</code>.
-            </p>
-            <p>
-                If an attribute syntax is possible, using the attribute syntax is typically more convenient and enables a more compact markup, but that is often just a matter of style, not a technical limitation. The following example shows the same properties being
-                set as in the previous attribute syntax example, but this time by using property element syntax for all properties of the Button.
-            </p>
-            <pre>
+            <section id="Property_Element_Syntax" class="main-section">
+                <header>Property Element Syntax</header>
+                <p>
+                    For some properties of an object element, attribute syntax is not possible, because the object or information necessary to provide the property value cannot be adequately expressed within the quotation mark and string restrictions of attribute syntax.
+                    For these cases, a different syntax known as property element syntax can be used.
+                </p>
+                <p>
+                    The syntax for the property element start tag is <code>&lt;</code><i>typeName</i><code>.</code><i>propertyName</i><code>&gt;</code>. Generally, the content of that tag is an object element of the type that the property takes as its
+                    value. After specifying content, you must close the property element with an end tag. The syntax for the end tag is <code>&lt;/</code><i>typeName</i><code>.</code><i>propertyName</i><code>&gt;</code>.
+                </p>
+                <p>
+                    If an attribute syntax is possible, using the attribute syntax is typically more convenient and enables a more compact markup, but that is often just a matter of style, not a technical limitation. The following example shows the same properties being
+                    set as in the previous attribute syntax example, but this time by using property element syntax for all properties of the Button.
+                </p>
+                <pre>
                         &lt;Button&gt;
                             &lt;Button.Background&gt;
                                 &lt;SolidColorBrush Color="Blue"/&gt;
@@ -98,7 +97,131 @@
                         &lt;/Button&gt;
                 </pre>
             </section>
+            <section id="Collection_Syntax" class="main-section">
+                <header>Collection Syntax</header>
+                <p>
+                    The XAML language includes some optimizations that produce more human-readable markup. One such optimization is that if a particular property takes a collection type, then items that you declare in markup as child elements within that property's value
+                    become part of the collection. In this case a collection of child object elements is the value being set to the collection property.
 
+                </p>
+                <p>
+                    The following example shows collection syntax for setting values of the <code>GradientStops</code> property:
+                </p>
+                <pre>
+                    &lt;LinearGradientBrush&gt;  
+                        &lt;LinearGradientBrush.GradientStops&gt;  
+                            &lt;!-- no explicit new GradientStopCollection, parser knows how to find or create --&gt;  
+                            &lt;GradientStop Offset="0.0" Color="Red" /&gt;  
+                            &lt;GradientStop Offset="1.0" Color="Blue" /&gt;  
+                        &lt;/LinearGradientBrush.GradientStops&gt;  
+                    &lt;/LinearGradientBrush&gt;
+                </pre>
+            </section>
+            <section id="XAML_Content_Properties" class="main-section">
+                <header>XAML Content Properties</header>
+                <p>
+                    XAML specifies a language feature whereby a class can designate exactly one of its properties to be the XAML content property. Child elements of that object element are used to set the value of that content property. In other words, for the content property
+                    uniquely, you can omit a property element when setting that property in XAML markup and produce a more visible parent/child metaphor in the markup.
+                </p>
+                <p>
+                    For example, <code>Border</code> specifies a content property of <code>Child</code>. The following two <code>Border</code> elements are treated identically. The first one takes advantage of the content property syntax and omits the
+                    <code>Border.Child</code> property element. The second one shows <code>Border.Child</code> explicitly.
+
+                </p>
+                <pre>
+                    &lt;Border&gt;  
+                        &lt;TextBox Width="300"/&gt;  
+                    &lt;/Border&gt;  
+                    &lt;!--explicit equivalent--&gt;  
+                    &lt;Border&gt;  
+                        &lt;Border.Child&gt;  
+                            &lt;TextBox Width="300"/&gt;  
+                        &lt;/Border.Child&gt;  
+                    &lt;/Border&gt;
+                </pre>
+                <p>
+                    As a rule of the XAML language, the value of a XAML content property must be given either entirely before or entirely after any other property elements on that object element. For instance, the following markup does not compile:
+
+                </p>
+                <pre>
+                        &lt;Button&gt;I am a   
+                            &lt;Button.Background>Blue&lt;/Button.Background&gt;  
+                            blue button&lt;/Button&gt;
+                </pre>
+                <p>
+                    For more information about this restriction on XAML content properties, see the "XAML Content Properties" section of XAML Syntax In Detail.
+                </p>
+            </section>
+            <section id="Text_Content" class="main-section">
+                <header>Text Content</header>
+                <p>
+                    A small number of XAML elements can directly process text as their content. To enable this, one of the following cases must be true:
+                    <ul>
+                        <li>
+                            The class must declare a content property, and that content property must be of a type assignable to a string (the type could be <b>Object</b>). For instance, any <b>ContentControl</b> uses <b>Content</b> as its content property
+                            and it is type <b>Object</b>, and this supports the following usage on a practical ContentControl such as a Button: <code>&lt;Button&gt;Hello&lt;/Button&gt;</code>.
+                        </li>
+                        <li>
+                            The type must declare a type converter, in which case the text content is used as initialization text for that type converter. For example, <code>&lt;Brush&gt;Blue&lt;/Brush&gt;</code>. This case is less common in practice.
+                        </li>
+                        <li>
+                            The type must be a known XAML language primitive.
+                        </li>
+                    </ul>
+                </p>
+            </section>
+            <section id="Content_Properties_and_Collection_Syntax_Combined" class="main-section">
+                <header>Content Properties and Collection Syntax Combined</header>
+                <p>
+                    Consider this example:
+                    <pre>
+                        &lt;StackPanel&gt;  
+                            &lt;Button&gt;First Button&lt;/Button&gt;  
+                                &lt;Button&gt;Second Button&lt;/Button&gt;  
+                        &lt;/StackPanel&gt;    
+                    </pre>
+                </p>
+                <p>
+                    Here, each <b>Button</b> is a child element of <b>StackPanel</b>. This is a streamlined and intuitive markup that omits two tags for two different reasons.
+                    <ul>
+                        <li>
+                            <b>Omitted StackPanel.Children property element:</b> StackPanel derives from Panel. Panel defines System.Windows.Controls.Panel.Children as its XAML content property.
+                        </li>
+                        <li>
+                            <b>Omitted UIElementCollection object element:</b> The <b>System.Windows.Controls.Panel.Children</b> property takes the type <b>UIElementCollection</b>, which implements <b>IList</b>. The collection's element tag can be omitted,
+                            based on the XAML rules for processing collections such as IList. (In this case, <b>UIElementCollection</b> actually cannot be instantiated because it does not expose a default constructor, and that is why the <b>UIElementCollection</b>                            object element is shown commented out).
+                        </li>
+                    </ul>
+                    <pre>
+                        &lt;StackPanel&gt;  
+                            &lt;StackPanel.Children&gt;  
+                                &lt;!--&lt;UIElementCollection&gt;--&gt;  
+                                &lt;Button>First Button&gt;/Button&gt;  
+                                &lt;Button>Second Button&gt;/Button&gt;  
+                                &lt;!--&lt;/UIElementCollection&gt;--&gt;  
+                            &lt;/StackPanel.Children&gt;  
+                        &lt;/StackPanel&gt;
+                    </pre>
+                </p>
+            </section>
+            <section id="Attribute_Syntax_(Events)" class="main-section">
+                <header>Attribute Syntax (Events)</header>
+                <p>
+                    Attribute syntax can also be used for members that are events rather than properties. In this case, the attribute's name is the name of the event. In the WPF implementation of events for XAML, the attribute's value is the name of a handler that implements
+                    that event's delegate. For example, the following markup assigns a handler for the <b>Click</b> event to a <b>Button</b> created in markup:
+                </p>
+                <pre>
+                    &lt;Page 
+                        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                        x:Class="ExampleNamespace.ExamplePage"&gt;
+                        &lt;Button Click="Button_Click"&gt;Click Me!&lt;/Button&gt;
+                    &lt;/Page&gt;
+                </pre>
+                <p>
+                    There is more to events and XAML in WPF than just this example of the attribute syntax. For example, you might wonder what the <code>ClickHandler</code> referenced here represents and how it is defined.
+                </p>
+            </section>
         </main>
     </div>
     <!-- Copy to here for CodePen -->
