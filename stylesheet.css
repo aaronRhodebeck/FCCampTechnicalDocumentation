@@ -10,9 +10,65 @@ code {
 }
 
 pre {
-    background: lightgray;
-    margin: 20px;
+    background: rgb(228, 228, 228);
+    margin: auto;
     padding: 10px;
-    border: 1px solid black;
+    border: 1px solid darkgray;
     font-family: monospace;
+    font-size: 1.3em;
+    width: 70%;
+    overflow-x: scroll;
+}
+
+p {
+    font-size: 1.2em;
+}
+
+li {
+    font-size: 1.2em;
+    padding-bottom: 5px;
+}
+
+html {
+    overflow-y: hidden;
+}
+
+main {
+    flex: 2;
+    overflow-y: scroll;
+    height: 100vh;
+    font-family: serif;
+}
+
+section {
+    padding: 10px;
+}
+
+.nav-link {
+    border-bottom: 1px solid darkgray;
+    padding: 5px;
+    font-size: 1.3em;
+    color: black;
+    text-decoration: none;
+}
+
+#page-container {
+    display: flex;
+}
+
+#navbar {
+    flex: 1;
+    width: 250px;
+    height: 100vh;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    overflow-y: scroll;
+}
+
+#nav-header {
+    font-size: 2em;
+    border-bottom: 1px solid darkgray;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
